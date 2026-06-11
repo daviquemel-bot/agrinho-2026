@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agro Forte, Futuro Sustentável</title>
     <style>
-        /* Configurações Globais */
+        /* Configurações Gerais - Fundo Preto e Fontes */
         * {
             margin: 0;
             padding: 0;
@@ -14,24 +14,25 @@
         }
 
         body {
-            background-color: #0b0c10;
-            color: #c5c6c7;
+            background-color: #0a0a0c;
+            color: #e0e0e6;
             line-height: 1.8;
         }
 
-        /* Cores do Tema:
-           Fundo Escuro: #0b0c10 e #1f2833
-           Azul Destaque: #45f3ff
-           Azul Detalhes: #1f2833 / #008cff
-           Texto Claro: #ffffff e #c5c6c7
-        */
+        /* Detalhes em Azul */
+        :root {
+            --azul-neon: #00d2ff;
+            --azul-profundo: #0066cc;
+            --azul-escuro: #101f30;
+            --cinza-claro: #a0a5b5;
+        }
 
-        /* Cabeçalho / Navbar */
+        /* Cabeçalho / Menu */
         header {
-            background-color: #1f2833;
-            border-bottom: 2px solid #45f3ff;
-            padding: 20px 50px;
-            position: sticky;
+            background-color: rgba(10, 10, 12, 0.95);
+            border-bottom: 2px solid var(--azul-profundo);
+            position: fixed;
+            width: 100%;
             top: 0;
             z-index: 1000;
         }
@@ -42,157 +43,137 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 20px;
         }
 
         .logo {
-            color: #ffffff;
             font-size: 1.5rem;
             font-weight: bold;
-            letter-spacing: 1px;
+            color: #fff;
         }
 
         .logo span {
-            color: #45f3ff;
+            color: var(--azul-neon);
+        }
+
+        nav a {
+            color: #e0e0e6;
+            text-decoration: none;
+            margin-left: 20px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--azul-neon);
         }
 
         /* Seção Hero (Banner Principal) */
         .hero {
-            position: relative;
             height: 60vh;
             display: flex;
-            align-items: center;
+            flex-direction: column;
             justify-content: center;
+            align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(11, 12, 16, 1)), 
-                        url('https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=1920') no-repeat center center/cover;
-            padding: 20px;
+            padding: 0 20px;
+            margin-top: 80px;
+            background: linear-gradient(180deg, var(--azul-escuro) 0%, #0a0a0c 100%);
+            border-bottom: 1px solid rgba(0, 210, 255, 0.2);
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            color: #ffffff;
+        .hero h1 {
+            font-size: 3rem;
             margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px rgba(69, 243, 255, 0.5);
+            color: #fff;
         }
 
-        .hero-content p {
+        .hero h1 span {
+            color: var(--azul-neon);
+            text-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
+        }
+
+        .hero p {
             font-size: 1.2rem;
-            color: #45f3ff;
             max-width: 600px;
-            margin: 0 auto;
+            color: var(--cinza-claro);
         }
 
         /* Container de Conteúdo Principal */
-        .main-content {
+        .container {
             max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        /* Estilização dos Grandes Textos */
-        .section-title {
-            color: #ffffff;
-            font-size: 2.2rem;
-            margin-bottom: 25px;
-            border-left: 5px solid #45f3ff;
-            padding-left: 15px;
-        }
-
-        .text-block {
+        /* Estilo dos Grandes Textos */
+        section {
             margin-bottom: 60px;
         }
 
-        .text-block p {
-            font-size: 1.1rem;
+        h2 {
+            font-size: 2rem;
+            color: #fff;
+            border-left: 4px solid var(--azul-neon);
+            padding-left: 15px;
+            margin-bottom: 25px;
+        }
+
+        p {
             margin-bottom: 20px;
+            font-size: 1.1rem;
+            color: var(--cinza-claro);
             text-align: justify;
         }
 
-        /* Galeria e Imagens Intermediárias */
-        .image-container {
-            width: 100%;
-            margin: 40px 0;
-            border: 1px solid #45f3ff;
+        .destaque-texto {
+            background-color: rgba(0, 102, 204, 0.1);
+            border: 1px solid rgba(0, 210, 255, 0.3);
+            padding: 25px;
             border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 0 15px rgba(69, 243, 255, 0.2);
+            margin: 30px 0;
         }
 
-        .image-container img {
-            width: 100%;
-            height: auto;
-            display: block;
-            filter: grayscale(20%) brightness(90%);
-            transition: transform 0.5s, filter 0.5s;
-        }
-
-        .image-container img:hover {
-            transform: scale(1.02);
-            filter: grayscale(0%) brightness(100%);
-        }
-
-        .image-caption {
-            background-color: #1f2833;
-            color: #45f3ff;
-            padding: 15px;
-            font-size: 0.9rem;
-            text-align: center;
-            border-top: 1px solid #45f3ff;
-        }
-
-        /* Grid de Destaques */
-        .agro-grid {
+        /* Seção de Curiosidades (Cards) */
+        .curiosidades-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
         }
 
-        .grid-item {
-            background-color: #1f2833;
-            padding: 30px;
-            border-radius: 8px;
-            border-bottom: 4px solid #45f3ff;
-            transition: transform 0.3s;
+        .card {
+            background-color: #121216;
+            border: 1px solid #222;
+            border-top: 4px solid var(--azul-profundo);
+            padding: 25px;
+            border-radius: 6px;
+            transition: transform 0.3s, border-color 0.3s;
         }
 
-        .grid-item:hover {
+        .card:hover {
             transform: translateY(-5px);
+            border-color: var(--azul-neon);
+            background-color: #16161c;
         }
 
-        .grid-item h3 {
-            color: #ffffff;
+        .card h3 {
+            color: var(--azul-neon);
             margin-bottom: 15px;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
 
         /* Rodapé */
         footer {
-            background-color: #050608;
-            border-top: 1px solid #1f2833;
-            padding: 40px 20px;
+            background-color: #050507;
             text-align: center;
-            color: #666;
+            padding: 30px;
+            border-top: 1px solid #222;
+            color: var(--cinza-claro);
             font-size: 0.9rem;
         }
 
-        footer p span {
-            color: #45f3ff;
-        }
-
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .hero-content h1 {
-                font-size: 2.2rem;
-            }
-            .section-title {
-                font-size: 1.8rem;
-            }
-            header {
-                padding: 20px;
-            }
+        footer span {
+            color: var(--azul-neon);
         }
     </style>
 </head>
@@ -200,30 +181,72 @@
 
     <header>
         <div class="nav-container">
-            <div class="logo">AGRO<span>FORTE</span></div>
+            <div class="logo">Agro<span>Forte</span></div>
+            <nav>
+                <a href="#sobre">O Cenário</a>
+                <a href="#tecnologia">Tecnologia</a>
+                <a href="#curiosidades">Curiosidades</a>
+            </nav>
         </div>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
-            <h1>Agro Forte, Futuro Sustentável</h1>
-            <p>A união da potência tecnológica no campo com a preservação dos nossos recursos naturais.</p>
-        </div>
+        <h1>Agro Forte, Futuro <span>Sustentável</span></h1>
+        <p>A união entre a força do campo, a inovação tecnológica e o respeito ao meio ambiente para alimentar as próximas gerações.</p>
     </section>
 
-    <main class="main-content">
+    <div class="container">
 
-        <article class="text-block">
-            <h2 class="section-title">A Nova Era do Agronegócio</h2>
-            <p>O agronegócio moderno enfrenta um dos maiores desafios da história da humanidade: alimentar uma população global em constante crescimento e, ao mesmo tempo, reduzir drasticamente a sua pegada ecológica. A resposta para essa equação não está no recuo da produção, mas sim no avanço exponencial da tecnologia e no manejo inteligente da terra. O conceito de um "Agro Forte" está intrinsecamente ligado à resiliência e à inovação contínua.</p>
-            <p>Hoje, o campo não é mais definido apenas pelo trabalho braçal, mas por sistemas complexos de análise de dados, inteligência artificial e biotecnologia. A otimização do uso da água, a redução no uso de defensivos agrícolas por meio da aplicação localizada e o monitoramento via satélite de safras inteiras transformaram as propriedades rurais em indústrias de alta precisão. Produzir mais em menos espaço tornou-se a meta dourada da agricultura sustentável.</p>
-        </article>
+        <section id="sobre">
+            <h2>A Nova Era da Agricultura Mundial</h2>
+            <p>O conceito de "Agro Forte" não se limita mais apenas ao volume total de produção ou à quantidade de toneladas exportadas anualmente. Hoje, a verdadeira força do setor agrícola reside na sua capacidade de se reinventar e produzir mais utilizando menos recursos naturais. Diante do desafio global de alimentar uma população em constante crescimento, a agricultura precisou evoluir para um modelo focado na eficiência máxima e no impacto ambiental mínimo.</p>
+            
+            <p>Práticas tradicionais estão dando lugar a manejos inteligentes, onde a conservação do solo, a proteção de recursos hídricos e a manutenção da biodiversidade local são vistas como aliadas da produtividade, e não como barreiras econômicas. A sustentabilidade deixou de ser um selo opcional para se tornar o pilar central de sobrevivência e relevância no mercado internacional.</p>
+            
+            <div class="destaque-texto">
+                <p><strong>O Grande Equilíbrio:</strong> Produzir em harmonia com a natureza significa entender que o solo é um organismo vivo. O uso de técnicas como o plantio direto, a rotação de culturas e a integração lavoura-pecuária-floresta (ILPF) provam que é possível recuperar áreas degradadas enquanto se mantém recordes de colheita.</p>
+            </div>
+        </section>
 
-        <div class="image-container">
-            <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad451?auto=format&fit=crop&q=80&w=1200" alt="Tecnologia no campo sustentável">
-            <div class="image-caption">Sistemas inteligentes monitoram o solo em tempo real, garantindo máxima eficiência com o mínimo de impacto ambiental.</div>
-        </div>
+        <section id="tecnologia">
+            <h2>Tecnologia e Inovação Verde</h2>
+            <p>Se o campo é o motor, a tecnologia é o combustível do agro moderno. A revolução digital transformou as fazendas em verdadeiros centros de dados. Sensores instalados no solo enviam informações em tempo real sobre a umidade e a necessidade exata de nutrientes, evitando o desperdício de água e insumos químicos. Drones sobrevoam plantações inteiras para identificar pragas antes mesmo que elas se espalhem, permitindo intervenções cirúrgicas e localizadas.</p>
+            
+            <p>Além disso, a biotecnologia tem desempenhado um papel fundamental no desenvolvimento de sementes mais resistentes a extremos climáticos, como secas prolongadas ou grandes volumes de chuva. Essa resiliência é crucial em tempos de transição climática, garantindo a segurança alimentar sem a necessidade de expandir a fronteira agrícola sobre florestas nativas.</p>
+        </section>
 
-        <article class="text-block">
-            <h2 class="section-title">Sustentabilidade como Pilar de Produtividade</h2>
-            <p>Engana-se quem pensa que a sustent
+        <section id="curiosidades">
+            <h2>Curiosidades do Agro Sustentável</h2>
+            <p>Descubra alguns fatos surpreendentes sobre como a ciência e a natureza trabalham juntas no campo:</p>
+            
+            <div class="curiosidades-grid">
+                <div class="card">
+                    <h3>Fazendas Verticais</h3>
+                    <p>Cidades ao redor do mundo já produzem alimentos dentro de prédios espelhados. Essas fazendas verticais economizam até 95% de água em comparação com a agricultura tradicional e não utilizam agrotóxicos.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Drones "Pastores"</h3>
+                    <p>Na pecuária sustentável, drones com câmeras térmicas e inteligência artificial são usados para monitorar a saúde do gado e mapear as pastagens, garantindo que o solo não sofra com o sobre-pastoreio.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Insetos do Bem</h3>
+                    <p>O controle biológico usa a própria natureza para combater pragas. Joaninhas e pequenas vespas são liberadas em lavouras para eliminar insetos nocivos, reduzindo drasticamente a necessidade de defensivos químicos.</p>
+                </div>
+
+                <div class="card">
+                    <h3>GPS de Alta Precisão</h3>
+                    <p>Tratores modernos operam de forma autônoma via satélite. Eles seguem rotas milimetricamente calculadas para evitar pisotear a plantação e compactar o solo, otimizando cada centímetro de terra.</p>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Agro Forte, Futuro Sustentável. Desenvolvido com foco no <span>Amanhã</span>.</p>
+    </footer>
+
+</body>
+</html> 
